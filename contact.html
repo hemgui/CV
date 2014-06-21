@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+		<title>Guillaume Hemery - Ingénieur développement Front-End et mobile - Contact</title>
+		<meta name="description" content="Me contacter" />
+		<meta name="keywords" content="Guillaume Hemery, intégration HTML, CSS, Javascript, Flex, AS3, Flash, AIR, mobile" />
+		<meta name="author" content="Guillaume HEMERY" />
+        
+        
+        <!-- Facebook Open Graph Meta Tags -->
+        <meta property="og:title" content="Guillaume Hemery - Ingénieur développement Front-End et mobile" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://guillaume-hemery.fr/" />
+        <meta property="og:image" content="http://guillaume-hemery.fr/images/me_mini_carre.jpg" />
+        <meta property="og:description" content="Expert AS3, passionné par les problématiques d'UX, je suis les évolutions du Web et me perfectionne depuis plus de 2 ans sur les nouveaux standards HTML5/CSS3. En recherche d'un poste de développement/gestion de projet web et mobile sur Nantes." />
+        <!-- END OG -->        
+        
+		<link rel="shortcut icon" href="./favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/global.css?version=7" />
+		<link rel="stylesheet" type="text/css" href="css/navigation-menu.css?version=3" />
+		<link rel="stylesheet" type="text/css" href="css/component-modal.css?version=3" />
+		<!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load --> 
+		<script src="js/modernizr.custom.25376.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/signals.min.js"></script>
+  		<script type="text/javascript" src="js/hasher.min.js"></script>
+	</head>
+	<body>
+
+		<div class="md-modal md-effect-19" id="modal-19">
+			<div class="md-content">
+				<h3>Projet ZeScreen</h3>
+				<div>
+					<iframe frameborder="0" width="320" height="180" src="http://www.dailymotion.com/embed/video/x8ho5o?logo=0"></iframe><br /><a href="http://www.dailymotion.com/video/x8ho5o_zescreen-en-1-mn_webcam" target="_blank">Zescreen en 1 mn</a> <i>par <a href="http://www.dailymotion.com/zescreen" target="_blank">zescreen</a></i>
+					<button class="md-close small">Fermer</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="perspective" class="perspective effect-rotateleft">
+			<div class="container">
+				<div class="wrapper"><!-- wrapper needed for scroll -->
+					<!-- Top Navigation -->
+					<header class="header">
+						<h1>Guillaume Hemery<span>Ingénieur développement Front-End et mobile</span></h1>	
+					</header>
+					<button id="showMenu">e</button>
+                    
+                    <noscript>
+                        <nav>
+                            <a href="./index.html" class="icon-home" data-link="presentation">Présentation</a>
+                            <a href="./formation.html" class="icon-book" data-link="formation">Formations</a>
+                            <a href="./professionnel.html" class="icon-keyboard" data-link="professionnel">Parcours professionnel</a>
+                            <!--<a href="#" class="icon-archive" data-link="portfolio">Portfolio</a>-->
+                            <a href="./hobbies.html" class="icon-music" data-link="hobbies">Passions</a>
+                            <a href="./contact.html" class="icon-mail" data-link="contact">Me contacter</a>
+                        </nav>
+                    </noscript>
+                    
+					<div id="main" class="main clearfix">
+						<noscript>
+                            <div id="contact-view">
+                                <h2>Contact</h2>
+                                <div id="contact-container">
+                                    <script type="text/javascript">
+                                        $(document).ready(function() {
+                                          var form = $('#contact-form'); // contact form
+                                          var submit = $('#button-submit');  // submit button
+                                          var alert = $('#alert'); // alert div for show alert message
+                                        
+                                          // form submit event
+                                          form.on('submit', function(e) {
+                                            e.preventDefault(); // prevent default form submit
+                                        
+                                            $.ajax({
+                                              url: 'contact.php', // form action url
+                                              type: 'POST', // form submit method get/post
+                                              dataType: 'html', // request type html/json/xml
+                                              data: form.serialize(), // serialize form data 
+                                              beforeSend: function() {
+                                                alert.fadeOut();
+                                                submit.html('Envoi en cours....'); // change submit button text
+                                              },
+                                              success: function(data) {
+                                                alert.removeClass('success error');
+                                                if (data == "Message envoyé !")
+                                                {
+                                                    form.trigger('reset'); // reset form
+                                                    alert.addClass('success');
+                                                }
+                                                else
+                                                {
+                                                    alert.addClass('error');   
+                                                }
+                                                  
+                                                alert.html(data).fadeIn(); // fade in response data
+                                                submit.html('Envoyer'); // reset submit button text
+                                              },
+                                              error: function(e) {
+                                                console.log(e)
+                                              }
+                                            });
+                                          });
+                                        });
+                                    </script>
+                                    
+                                    <form id="contact-form" action="contact.php" method="post">
+                                  
+                                      <p class="name">
+                                        <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nom" id="name" />
+                                      </p>
+                                      
+                                      <p class="email">
+                                        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+                                      </p>
+                                      
+                                      <p class="text">
+                                        <textarea name="message" class="validate[required,length[6,300]] feedback-input" id="message" placeholder="Message/Commentaire/Question"></textarea>
+                                      </p>
+                                      
+                                      <div id="alert"/>
+                                      
+                                      <div class="submit">
+                                        <input type="submit" value="Envoyer" id="button-submit"/>
+                                        <div class="ease"></div>
+                                      </div>
+                                    </form>
+                                 
+                                </div><!-- /end #contact-form -->
+                            </div>
+                        </noscript>
+					</div><!-- /main -->
+				</div><!-- wrapper -->
+			</div><!-- /container -->
+			<nav class="outer-nav right vertical">
+				<a href="#" class="inside-link icon-home" data-link="presentation">Présentation</a>
+				<a href="#" class="inside-link icon-book" data-link="formation">Formations</a>
+				<a href="#" class="inside-link icon-keyboard" data-link="professionnel">Parcours professionnel</a>
+				<!--<a href="#" class="inside-link icon-archive" data-link="portfolio">Portfolio</a>-->
+				<a href="#" class="inside-link icon-music" data-link="hobbies">Passions</a>
+				<a href="#" class="inside-link icon-mail" data-link="contact">Me contacter</a>
+			</nav>
+		</div><!-- /perspective -->
+
+
+        <div class="md-overlay"></div><!-- the overlay element -->
+
+		<script src="js/classie.js"></script>
+		<script src="js/menu.js"></script>
+        <script src="js/navigation.js"></script>
+
+		<!-- for the blur effect -->
+		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+		<script>
+			// this is important for IEs
+			var polyfilter_scriptpath = '/js/';
+		</script>
+		<script src="js/cssParser.js"></script>
+		<script src="js/css-filters-polyfill.js"></script>
+
+		<script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-47068202-1', 'guillaume-hemery.fr');
+          ga('send', 'pageview');
+        
+        </script>
+	</body>
+</html>
