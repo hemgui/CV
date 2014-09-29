@@ -1,1 +1,1 @@
-WebCV Guillaume Hemery base on codrops navigation idea : http://tympanus.net/codrops/
+WebCV Guillaume Hemery base on codrops navigation idea : http://tympanus.net/codrops/2013/12/18/perspective-page-view-navigation/
